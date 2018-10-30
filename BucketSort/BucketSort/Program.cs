@@ -29,19 +29,25 @@ namespace BucketSort
                 }
                 arr[i] = num;
             }
+            Console.Write("unsorted: ");
+            printArray(arr);
+            
+            bucketSort(arr);
+
+            Console.WriteLine("sorted: ");
             printArray(arr);
         }
-        // This is the function that will print the array. 
 
+        // This is the function that will print the array. 
         public static void printArray(int[] x)
         {
             //runs through a for loop to see how long the array is, when it gets to the last variable it starts.
-            for (int i = 0; i < x.Length; i++)
+            for (int i = 0; i < x.Length; i++) 
             {
                 //Writes the array
                 Console.Write("[" + x[i] + "] ");
             }
-            //puts  a space after the array
+            //puts a space after the array
             Console.WriteLine(" ");
         }
     }
