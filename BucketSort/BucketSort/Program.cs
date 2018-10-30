@@ -9,7 +9,8 @@ namespace BucketSort
     class Program
     {
 
-        static void bucketSort(ref int[] arr) {
+        static void bucketSort(ref int[] arr) 
+        {
 
         }
 
