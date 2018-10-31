@@ -16,11 +16,11 @@ namespace BucketSort
                 buckets[i] = new List<int>();
             }
 
-            double max = arr.Max();
-            int divider = Math.Ceiling((max + 1.0)/buckets.Length);
+            int max = arr.Max();
+            int divider = (max + 1)/buckets.Length;
 
             for (int j = 0; j < arr.Length; j++) {
-                int index = Math.Floor(arr[j]/divider);
+                int index = arr[j]/divider;
                 buckets[index].Add(arr[j]);
             }
         }
