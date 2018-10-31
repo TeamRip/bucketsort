@@ -36,12 +36,12 @@ namespace BucketSort {
             int[] buckets = new int[max + 1]; //create an array big enough to hold all numbers
 
             for (int i = 0; i < arr.Length; i++) {
-                buckets[arr[i]]++;
+                buckets[arr[i]]++; //count the number of times a number occurs
             }
 
             int position = 0;
             for (int i = 0; i < buckets.Length; i++) {
-                for (int j = 0; j < buckets[i]; j++) {
+                for (int j = 0; j < buckets[i]; j++) { //insert i into the array j times
                     Console.WriteLine(i);
                     arr[position] = i; //put the number into the new spot
                     position++;
