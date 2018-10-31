@@ -17,7 +17,7 @@ namespace BucketSort
             }
 
             double max = arr.Max();
-            int divider = Math.Ceiling((max + 1.0)/buckets.Length);
+            int divider = Math.Ceiling(Convert.ToDouble((max + 1.0)/buckets.Length));
 
             for (int j = 0; j < arr.Length; j++) {
                 int index = Math.Floor(arr[j]/divider);
