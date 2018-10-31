@@ -8,7 +8,33 @@ namespace BucketSort
 {
     class Program
     {
-        
+        static void Main(string[] args)
+        {
+            //Beginning of the user input section, takes the user input into an array while trimming extra space of the end
+            Console.WriteLine("Please enter numbers seperated by spaces: ");
+            string input = Console.ReadLine().Trim();
+            string[] numbers = input.Split(' ');
+            int num = 0;
+            int[] arr = new int[numbers.Length];
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                bool ret = int.TryParse(numbers[i].Trim(), out num);
+                if (!ret)
+                { //Isn't a number, unable to parse it, so then it just skips it
+                    Console.WriteLine("[ERROR] Can not parse: " + numbers[i] + " Skipping...");
+                    continue;
+                }
+                arr[i] = num;
+            }
+
+            Console.Write("Unsorted: ");
+            printArray(arr); // Prints out the unsorted array
+
+            bucketSort(ref arr); //Sorts the array using a bucket sort 
+            Console.Write("Sorted: ");
+            printArray(arr); // Prints out sorted array
+        }
+
         public static void bucketSort(ref int[] arr) 
         {
             List<int>[] buckets = new List<int>[arr.Length - 1];
@@ -35,33 +61,6 @@ namespace BucketSort
                 }
             }
         }
-
-        static void Main(string[] args)
-        {
-            //Beginning of the user input section, takes the user input into an array while trimming extra space of the end
-            Console.WriteLine("Please enter numbers seperated by spaces: ");
-            string input = Console.ReadLine().Trim();
-            string[] numbers = input.Split(' ');
-
-            int num = 0;
-            int[] arr = new int[numbers.Length];
-            for (int i = 0; i < numbers.Length; i++) {
-                bool ret = int.TryParse(numbers[i].Trim(), out num);
-                if (!ret) { //Isn't a number, unable to parse it, so then it just skips it
-                    Console.WriteLine("Can not parse: " + numbers[i] + " Skipping...");
-                    continue;
-                }
-                arr[i] = num;
-            }
-
-            Console.Write("Unsorted: ");
-            printArray(arr); // Prints out the unsorted array
-            
-            bucketSort(ref arr); //Sorts the array using a bucket sort 
-            Console.Write("Sorted: ");
-            printArray(arr); // Prints out sorted array
-        }
-
         // This is the function that will print the array. 
         public static void printArray(int[] x)
         {
