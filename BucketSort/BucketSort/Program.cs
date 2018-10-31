@@ -32,7 +32,7 @@ namespace BucketSort
             Console.Write("unsorted: ");
             printArray(arr);
             
-            bucketSort(arr);
+            bucketSort(ref arr);
 
             Console.WriteLine("sorted: ");
             printArray(arr);
