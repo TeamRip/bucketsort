@@ -29,6 +29,15 @@ namespace BucketSort
                 }
                 arr[i] = num;
             }
+            printArray(arr);
+        }
+        public static void printArray(int[] x)
+        {
+            for (int i = 0; i < x.Length; i++)
+            {
+                Console.Write("[" + x[i] + "] ");
+            }
+            Console.WriteLine(" ");
         }
     }
 }
