@@ -16,13 +16,8 @@ namespace BucketSort
                 buckets[i] = new List<int>();
             }
 
-<<<<<<< HEAD
-            double max = arr.Max();
-            int divider = Math.Ceiling(Convert.ToDouble((max + 1.0)/buckets.Length));
-=======
             int max = arr.Max();
             int divider = (max + 1)/buckets.Length;
->>>>>>> f37fb0714b6a5d12b47281e24f7fa31ed84ce04d
 
             for (int j = 0; j < arr.Length; j++) {
                 int index = arr[j]/divider;
