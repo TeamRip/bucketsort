@@ -8,10 +8,10 @@ namespace BucketSort
 {
     class Program
     {
-
+        
         public static void bucketSort(ref int[] arr) 
         {
-            List<int>[] buckets = new List<int>[arr.Length];
+            List<int>[] buckets = new List<int>[arr.Length - 1];
             for (int i = 0; i < buckets.Length; i++) { // initialize all of the lists
                 buckets[i] = new List<int>();
             }
@@ -20,8 +20,19 @@ namespace BucketSort
             int divider = (max + 1)/buckets.Length;
 
             for (int j = 0; j < arr.Length; j++) {
-                int index = arr[j]/divider;
+                int index = arr[j] % buckets.Length;
                 buckets[index].Add(arr[j]);
+            }
+
+            int position = 0;
+            for (int i = 0; i < buckets.Length; i++) {
+                if (buckets[i].Count > 0) {
+                    int[] list = buckets[i].ToArray();
+                    for (int j = 0; j < list.Length; j++) {
+                        arr[position] = list[j];
+                        position++;
+                    }
+                }
             }
         }
 
