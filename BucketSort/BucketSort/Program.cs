@@ -11,9 +11,17 @@ namespace BucketSort
 
         public static void bucketSort(ref int[] arr) 
         {
-            List<int>[] buckets = new List<int>[arr.Length]; // initialize all of the lists
-            for (int i = 0; i < buckets.Length; i++) {
+            List<int>[] buckets = new List<int>[arr.Length];
+            for (int i = 0; i < buckets.Length; i++) { // initialize all of the lists
                 buckets[i] = new List<int>();
+            }
+
+            double max = arr.Max();
+            int divider = Math.Ceiling((max + 1.0)/buckets.Length);
+
+            for (int j = 0; j < arr.Length; j++) {
+                int index = Math.Floor(arr[j]/divider);
+                buckets[index].Add(arr[j]);
             }
         }
 
@@ -34,11 +42,12 @@ namespace BucketSort
                 }
                 arr[i] = num;
             }
-            Console.Write("unsorted: ");
+
+            Console.Write("Unsorted: ");
             printArray(arr); // Prints out the unsorted array
             
             bucketSort(ref arr); //Sorts the array using a bucket sort 
-            Console.WriteLine("sorted: ");
+            Console.Write("Sorted: ");
             printArray(arr); // Prints out sorted array
         }
 
