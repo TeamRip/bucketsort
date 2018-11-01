@@ -42,7 +42,6 @@ namespace BucketSort {
             int position = 0;
             for (int i = 0; i < buckets.Length; i++) {
                 for (int j = 0; j < buckets[i]; j++) { //insert i into the array j times
-                    Console.WriteLine(i);
                     arr[position] = i; //put the number into the new spot
                     position++;
                 }
