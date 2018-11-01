@@ -53,6 +53,7 @@ namespace BucketSort {
         }
 
         public static void bucketSort(ref int[] arr) {
+            int min = arr.Min();
             int max = arr.Max();
 
             int[] buckets = new int[max + 1]; //create an array big enough to hold all numbers
@@ -62,7 +63,7 @@ namespace BucketSort {
             }
 
             int position = 0;
-            for (int i = 0; i < buckets.Length; i++) {
+            for (int i = min; i < buckets.Length; i++) {
                 for (int j = 0; j < buckets[i]; j++) { //insert i into the array j times
                     arr[position] = i; //put the number into the new spot
                     position++;
