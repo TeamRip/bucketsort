@@ -7,27 +7,49 @@ using System.Threading.Tasks;
 namespace BucketSort {
     class Program {
         static void Main(string[] args) {
-            //Beginning of the user input section, takes the user input into an array while trimming extra space of the end
-            Console.WriteLine("Please enter numbers seperated by spaces: ");
-            string input = Console.ReadLine().Trim();
-            string[] numbers = input.Split(' ');
-            int num = 0;
-            int[] arr = new int[numbers.Length];
-            for (int i = 0; i < numbers.Length; i++) {
-                bool ret = int.TryParse(numbers[i].Trim(), out num);
-                if (!ret) { //Isn't a number, unable to parse it, so then it just skips it
-                    Console.WriteLine("[ERROR] Can not parse: " + numbers[i] + " Skipping...");
-                    continue;
+            bool done = false;
+            string input;
+            while (!done)
+            {
+                //Beginning of the user input section, takes the user input into an array while trimming extra space of the end
+                Console.WriteLine("Please enter numbers seperated by spaces: ");
+                input = Console.ReadLine().Trim();
+                string[] numbers = input.Split(' ');
+                int num = 0;
+                int[] arr = new int[numbers.Length];
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    bool ret = int.TryParse(numbers[i].Trim(), out num);
+                    if (!ret)
+                    { //Isn't a number, unable to parse it, so then it just skips it
+                        Console.WriteLine("[ERROR] Can not parse: " + numbers[i] + " Skipping...");
+                        continue;
+                    }
+                    arr[i] = num;
                 }
-                arr[i] = num;
+
+                Console.Write("Unsorted: ");
+                printArray(arr); // Prints out the unsorted array
+
+                bucketSort(ref arr); //Sorts the array using a bucket sort 
+                Console.Write("Sorted: ");
+                printArray(arr); // Prints out sorted array
+                bool confirm = false;
+                while (!confirm)
+                {
+                    Console.WriteLine("Would you like to do another sort? [y/n]"); //asks player if they would like to sort more data
+                    input = Console.ReadLine();
+                    if (input == "n") {
+                        done = true;
+                        confirm = true;
+                        Console.WriteLine("Goodbye");
+                    }
+                    else if (input == "y") {
+                        done = false;
+                        confirm = true;
+                    }
+                }
             }
-
-            Console.Write("Unsorted: ");
-            printArray(arr); // Prints out the unsorted array
-
-            bucketSort(ref arr); //Sorts the array using a bucket sort 
-            Console.Write("Sorted: ");
-            printArray(arr); // Prints out sorted array
         }
 
         public static void bucketSort(ref int[] arr) {
